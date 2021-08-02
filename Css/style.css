@@ -46,6 +46,10 @@ header .xx {
   left: 85%;
 }
 
+.bag .cv {
+  color: white;
+}
+
 li {
   display: inline;
   margin-right: 10px;
@@ -68,13 +72,12 @@ li.price {
   .bag .cv {
     color: black;
   }
-  .col {
-    margin-left: 18%;
-    
-}
-img.carouselimg 
-    {
-    height: 100%;
+  img.carouselimg {
+    height: 496px;
     width: 100%;
   }
+  .col {
+    margin-left: 18%;
+  }
 }
+/*# sourceMappingURL=style.css.map */
