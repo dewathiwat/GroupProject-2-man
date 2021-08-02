@@ -150,7 +150,7 @@ const getProductDetails = async () => {
     <div class="price-add">
     
     <li class="card-text text-danger">${product.prdPrice} THB</li>
-    <li class="add btn btn-dark " onclick="location.href= 'index2.html?id=${product.id}'";>ADD</li>
+    <li class="add btn btn-dark " onclick="location.href= 'page2.html?id=${product.id}'";>ADD</li>
     </div>
   </div>  
 </div>
@@ -170,106 +170,10 @@ getProductDetails();
 
 
 
-// !page 2
-const getProductOneDetail = async () => {
-  try {
-    const response = await axios.get(
-      "https://6102d7aa79ed680017482359.mockapi.io/productdetail"
-    );
-    document.getElementById("Detail").innerHTML = response.data
-      .map(
-        (product) =>
-          `
-      
-<div class="col-6">
-<img src="${product.prdImageUrl}"> </div>
-<div class="col-6">
-
-<h2>Product name: ${product.prdname}</h2>
-<h4 class="text-danger">${product.prdPrice} THB</h4>
-<p class="text-secondary">Size</p>
-<div><select name="size" size="1">
-<option value="default" selected>
-Please Select
-</option>
-
-  <option value="Human Resources">
-    Human Resources
-  </option>
-  <option value="Development">
-    Development
-  </option>
-  <option value="Accounting">
-    Accounting
-  </option>
-  <option value="Sales">
-    Sales
-  </option>
-
-
-
-</select> </div>
-<button class="btn btn-dark text-white"onclick="location.href = 'index2.html?id=${product.id}';">Add To Bag</button>
-<h2>Product Details: ${product.txtDetail}</h2>
-
-<button class="btn btn-secondary  text-dark"onclick="">show detail</button>
-
-</div>
-</div>
-
-
-        `
-      )
-      .join("");
-  } catch (e) {
-    console.log(e.message);
-  }
-};
-getProductOneDetail();
 
 
 
 
 
-// !page 3
-
-let searchParams = new URLSearchParams(window.location.search).get("id");
-
-const getProductBag = async () => {
-  try {
-    const response = await axios.get(
-      "https://6102d7aa79ed680017482359.mockapi.io/"
-    );
-    document.getElementById("test1").innerHTML = response.data
-      .map(
-        (product) =>
- `
-<div class="row">
-<div class="col-8">
-<div class="col-4">
-<img src="${product.prdImageUrl}"> </div>
- </div>
-<div class="col-4">
- <h4 class="text-danger">${product.prdPrice} THB</h4>
- <h2>Product name: ${product.prdname}</h2>
- </div>
-
-</div>
-
-<div class="col-4">
-
-<div class="row">
-<h3>bag</h3><h3>bag</h3><h3>bag</h3><h3>bag</h3><h3>bag</h3>
-</div>
-</div>
-</div>
-        `
-      )
-      .join("");
-  } catch (e) {
-    console.log(e.message);
-  }
-};
-getProductBag();
 
 
