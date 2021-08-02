@@ -24,6 +24,17 @@ const getProductOneDetail = async () => {
 getProductOneDetail();
 
 function ShowDetail(data){
+    let text = "";
+
+
+
+    data.prdSize.forEach(myFunction);
+    function myFunction(item) {
+        text += `<option value="${item}" >
+        ${item}
+        
+        </option> `
+      }
     document.getElementById("Detail").innerHTML =
           `
       
@@ -39,21 +50,7 @@ function ShowDetail(data){
 Please Select
 
 </option>
-
-  <option value="Human Resources">
-    Human Resources
-  </option>
-  <option value="Development">
-    Development
-  </option>
-  <option value="Accounting">
-    Accounting
-  </option>
-  <option value="Sales">
-    Sales
-  </option>
-
-
+${text}
 
 </select> </div>
 <button class="btn btn-dark text-white"onclick="location.href = 'index2.html?id=${data.id}';">Add To Bag</button>
@@ -66,4 +63,6 @@ Please Select
 
 
         `
+
 }
+
