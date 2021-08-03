@@ -1,5 +1,6 @@
 // !page 2
 let searchParams = new URLSearchParams(window.location.search).get("id");
+let re =''
 const getProductOneDetail = async () => { 
   console.log(searchParams)
   try {
@@ -9,6 +10,7 @@ const getProductOneDetail = async () => {
     let resulte = response.data.filter((data) =>{
       return data.id == searchParams
     })
+    re = resulte
     console.log(resulte)
     for(data of resulte){
         ShowDetail(data)
@@ -22,19 +24,15 @@ const getProductOneDetail = async () => {
   }
 };
 getProductOneDetail();
-
+  let text = "";
 function ShowDetail(data){
-    let text = "";
+  console.log('show',data)
+    
 
 
 
     data.prdSize.forEach(myFunction);
-    function myFunction(item) {
-        text += `<option value="${item}" >
-        ${item}
-        
-        </option> `
-      }
+    
     document.getElementById("Detail").innerHTML =
           `
       
@@ -53,7 +51,7 @@ Please Select
 ${text}
 
 </select> </div>
-<button class="btn btn-dark text-white"onclick="location.href = 'index2.html?id=${data.id}';">Add To Bag</button>
+<button class="btn btn-dark text-white"onclick="${setlocal(data)}">Add To Bag</button>
 <h2>Product Details: ${data.txtDetail}</h2>
 
 <button class="btn btn-secondary  text-dark"onclick="">show detail</button>
@@ -63,6 +61,17 @@ ${text}
 
 
         `
+function setlocal(data){
 
+  localStorage.setItem('cart', JSON.stringify(data))
+  console.log('addbag',data)
+}
+}
+
+function myFunction(item) {
+  text += `<option value="${item}" >
+  ${item}
+  
+  </option> `
 }
 
