@@ -1,40 +1,32 @@
 // !page 2
 let searchParams = new URLSearchParams(window.location.search).get("id");
-let re =''
-const getProductOneDetail = async () => { 
-  console.log(searchParams)
+let re = "";
+const getProductOneDetail = async () => {
+  console.log(searchParams);
   try {
     const response = await axios.get(
       "https://6102d7aa79ed680017482359.mockapi.io/productdetail"
     );
-    let resulte = response.data.filter((data) =>{
-      return data.id == searchParams
-    })
-    re = resulte
-    console.log(resulte)
-    for(data of resulte){
-        ShowDetail(data)
+    let resulte = response.data.filter((data) => {
+      return data.id == searchParams;
+    });
+    re = resulte;
+    console.log(resulte);
+    for (data of resulte) {
+      ShowDetail(data);
     }
-
-    
-      
-      
   } catch (e) {
     console.log(e.message);
   }
 };
 getProductOneDetail();
-  let text = "";
-function ShowDetail(data){
-  console.log('show',data)
-    
+let text = "";
+async function ShowDetail(data) {
+  console.log("show", data);
 
+  data.prdSize.forEach(myFunction);
 
-
-    data.prdSize.forEach(myFunction);
-    
-    document.getElementById("Detail").innerHTML =
-          `
+  document.getElementById("Detail").innerHTML = `
       
 <div class="col-6">
 <img src="${data.prdImageUrl}"> </div>
@@ -61,11 +53,7 @@ ${text}
 
 
         `
-function setlocal(data){
-
-  localStorage.setItem('cart', JSON.stringify(data))
-  console.log('addbag',data)
-}
+  
 }
 
 function myFunction(item) {
@@ -74,4 +62,8 @@ function myFunction(item) {
   
   </option> `
 }
-
+function setlocal(data) {
+    alert('click')
+    localStorage.setItem("cart", JSON.stringify(data));
+    console.log("addbag", data);
+  };
