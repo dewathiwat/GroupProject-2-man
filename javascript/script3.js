@@ -41,5 +41,5 @@
 
 const dataJson = localStorage.getItem("cart");
     console.log(`datajson`, dataJson);
-    document.getElementById("test1").innerHTML = dataJson;
+    document.getElementById("test1").innerHTML = JSON.stringify(dataJson);
   
