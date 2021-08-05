@@ -1,6 +1,6 @@
 // !page 2
 let searchParams = new URLSearchParams(window.location.search).get("id");
-let re = "";
+var re = "";
 const getProductOneDetail = async () => {
   console.log(searchParams);
   try {
@@ -10,8 +10,9 @@ const getProductOneDetail = async () => {
     let resulte = response.data.filter((data) => {
       return data.id == searchParams;
     });
-    re = resulte;
+     re = resulte;
     console.log(resulte);
+    console.log('re',re)
     for (data of resulte) {
       ShowDetail(data);
     }
@@ -43,7 +44,7 @@ Please Select
 ${text}
 
 </select> </div>
-<button class="btn btn-dark text-white"onclick="${setlocal(data)}">Add To Bag</button>
+<button class="btn btn-dark text-white"onclick="${setlocal(re)}">Add To Bag</button>
 <h2>Product Details: ${data.txtDetail}</h2>
 
 <button class="btn btn-secondary  text-dark"onclick="">show detail</button>
@@ -62,8 +63,16 @@ function myFunction(item) {
   
   </option> `
 }
-function setlocal(data) {
+function setlocal(re) {
     alert('click')
-    localStorage.setItem("cart", JSON.stringify(data));
-    console.log("addbag", data);
+    console.log('reinser :',re)
+    if(localStorage.getItem('cart')==null){
+     localStorage.setItem("cart", JSON.stringify(re)); 
+    }else{
+    
+    let ls=localStorage.getItem('cart')
+     console.log(ls)
+    localStorage.setItem("cart", ls+JSON.stringify(re)); 
+    }
+    console.log("addbag", re);
   };
