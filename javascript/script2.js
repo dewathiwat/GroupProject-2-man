@@ -14,7 +14,7 @@ const getProductOneDetail = async () => {
     console.log(resulte);
     console.log('re',re)
     for (data of resulte) {
-      ShowDetail(data);
+      ShowDetail(data,searchParams);
     }
   } catch (e) {
     console.log(e.message);
@@ -22,7 +22,7 @@ const getProductOneDetail = async () => {
 };
 getProductOneDetail();
 let text = "";
-async function ShowDetail(data) {
+async function ShowDetail(data,searchParams) {
   console.log("show", data);
 
   data.prdSize.forEach(myFunction);
@@ -44,7 +44,7 @@ Please Select
 ${text}
 
 </select> </div>
-<button class="btn btn-dark text-white"onclick="${setlocal(re)}">Add To Bag</button>
+<button class="btn btn-dark text-white" onclick="${await setlocal(re)} ">Add To Bag</button>
 <h2>Product Details: ${data.txtDetail}</h2>
 
 <button class="btn btn-secondary  text-dark"onclick="">show detail</button>
@@ -63,16 +63,13 @@ function myFunction(item) {
   
   </option> `
 }
-function setlocal(re) {
-    alert('click')
-    console.log('reinser :',re)
-    if(localStorage.getItem('cart')==null){
-     localStorage.setItem("cart", JSON.stringify(re)); 
-    }else{
-    
-    let ls=localStorage.getItem('cart')
-     console.log(ls)
-    localStorage.setItem("cart", ls+JSON.stringify(re)); 
-    }
-    console.log("addbag", re);
+function setlocal(data) {
+  const oldProductCart = JSON.parse(localStorage.getItem("dataproduct"))
+  const newProductCart = data
+  let card=oldProductCart.concat(data)
+  localStorage.setItem("dataproduct", JSON.stringify(card))
+  alert('addproduct "Success"')
+  
+   
+
   };
