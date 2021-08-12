@@ -20,11 +20,11 @@
 //    <h4 class="text-danger">${product.prdPrice} THB</h4>
 //    <h2>Product name: ${product.prdname}</h2>
 //    </div>
-
+  
 //   </div>
-
+  
 //   <div class="col-4">
-
+  
 //   <div class="row">
 //   <h3>bag</h3><h3>bag</h3><h3>bag</h3><h3>bag</h3><h3>bag</h3>
 //   </div>
@@ -39,25 +39,7 @@
 //   };
 //   getProductBag();
 
-const dataJson = localStorage.getItem("dataproduct");
-let myproduct = JSON.parse(dataJson);
-console.log(`myproduct`, myproduct);
-//document.getElementById("test1").innerHTML = JSON.stringify(dataJson);
-document.getElementById("product").innerHTML = myproduct
-  .map(
-    (product) =>
-      `
-        <div class="col">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class = "col-4 " src="${product.prdImageUrl}"> </div>
-                            <div class = "col"></div>
-                        </div>
-                    </div>
-        </div>
-
-
-
-        `
-  )
-  .join("");
+const dataJson = localStorage.getItem("cart");
+    console.log(`datajson`, dataJson);
+    document.getElementById("test1").innerHTML = JSON.stringify(dataJson);
+  
