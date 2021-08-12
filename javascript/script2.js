@@ -66,10 +66,15 @@ function myFunction(item) {
 function setlocal(data) {
   const oldProductCart = JSON.parse(localStorage.getItem("dataproduct"))
   const newProductCart = data
-  let card=oldProductCart.concat(data)
+  if(oldProductCart==null){
+  let card=newProductCart
   localStorage.setItem("dataproduct", JSON.stringify(card))
-  alert('addproduct "Success"')
-  
-   
+  alert('addproduct "Success1"')
+  }else{
+  let card=oldProductCart.concat(newProductCart)
+  localStorage.setItem("dataproduct", JSON.stringify(card))
+  alert('addproduct "Success2"')
+}
+
 
   };
