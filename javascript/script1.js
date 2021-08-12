@@ -142,23 +142,21 @@ const getProductDetails = async () => {
       .map(
         (product) =>
           `
-          <div class="col-3 mb-4">
+          <div class="col-sm-6 col-xs-1 mb-4">
                     <div class="card">
                     <img class="card-img-top" src="${product.prdImageUrl}" alt="Card image cap">
                     <div class="card-body">
     <h6 class="card-title">${product.prdname}</h6>
-    <div class="price-add">
+    <div class="price-add ">
+    
     
     <li class="card-text text-danger">${product.prdPrice} THB</li>
     <li class="add btn btn-dark " onclick="location.href= 'page2.html?id=${product.id}'";>ADD</li>
-    </div>
+    
+    </div>  
   </div>  
 </div>
 </div>
-
-
-
-
         `
       )
       .join("");

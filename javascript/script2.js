@@ -15,10 +15,7 @@ const getProductOneDetail = async () => {
     for(data of resulte){
         ShowDetail(data)
     }
-
-    
-      
-      
+     
   } catch (e) {
     console.log(e.message);
   }
