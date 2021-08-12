@@ -3,16 +3,6 @@
   width: 270px;
 }
 
-div {
-  border: 1px solid black;
-}
-
-div .myproduct {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
 .row {
   margin-bottom: 50px;
 }
