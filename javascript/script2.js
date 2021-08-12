@@ -1,37 +1,33 @@
 // !page 2
 let searchParams = new URLSearchParams(window.location.search).get("id");
-let re =''
-const getProductOneDetail = async () => { 
-  console.log(searchParams)
+var re = "";
+const getProductOneDetail = async () => {
+  console.log(searchParams);
   try {
     const response = await axios.get(
       "https://6102d7aa79ed680017482359.mockapi.io/productdetail"
     );
-    let resulte = response.data.filter((data) =>{
-      return data.id == searchParams
-    })
-    re = resulte
-    console.log(resulte)
-    for(data of resulte){
-        ShowDetail(data)
+    let resulte = response.data.filter((data) => {
+      return data.id == searchParams;
+    });
+     re = resulte;
+    console.log(resulte);
+    console.log('re',re)
+    for (data of resulte) {
+      ShowDetail(data,searchParams);
     }
-     
   } catch (e) {
     console.log(e.message);
   }
 };
 getProductOneDetail();
-  let text = "";
-function ShowDetail(data){
-  console.log('show',data)
-    
+let text = "";
+async function ShowDetail(data,searchParams) {
+  console.log("show", data);
 
+  data.prdSize.forEach(myFunction);
 
-
-    data.prdSize.forEach(myFunction);
-    
-    document.getElementById("Detail").innerHTML =
-          `
+  document.getElementById("Detail").innerHTML = `
       
 <div class="col-6">
 <img src="${data.prdImageUrl}"> </div>
@@ -48,7 +44,7 @@ Please Select
 ${text}
 
 </select> </div>
-<button class="btn btn-dark text-white"onclick="${setlocal(data)}">Add To Bag</button>
+<button class="btn btn-dark text-white" onclick="${await setlocal(re)} ">Add To Bag</button>
 <h2>Product Details: ${data.txtDetail}</h2>
 
 <button class="btn btn-secondary  text-dark"onclick="">show detail</button>
@@ -58,11 +54,7 @@ ${text}
 
 
         `
-function setlocal(data){
-
-  localStorage.setItem('cart', JSON.stringify(data))
-  console.log('addbag',data)
-}
+  
 }
 
 function myFunction(item) {
@@ -71,4 +63,13 @@ function myFunction(item) {
   
   </option> `
 }
+function setlocal(data) {
+  const oldProductCart = JSON.parse(localStorage.getItem("dataproduct"))
+  const newProductCart = data
+  let card=oldProductCart.concat(data)
+  localStorage.setItem("dataproduct", JSON.stringify(card))
+  alert('addproduct "Success"')
+  
+   
 
+  };
