@@ -39,7 +39,12 @@
 //   };
 //   getProductBag();
 
-const dataJson = localStorage.getItem("cart");
-    console.log(`datajson`, dataJson);
-    document.getElementById("test1").innerHTML = JSON.stringify(dataJson);
+const dataJson = localStorage.getItem("dataproduct");
+    let obj =JSON.parse(dataJson)
+    console.log(obj);
+    document.getElementById("test1").innerText = obj.map((product) => { product.prdname })
+    // obj.map((product) => { product.prdname })
+    
+    
+   
   
