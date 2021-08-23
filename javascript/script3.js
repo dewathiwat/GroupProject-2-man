@@ -42,9 +42,44 @@
 const dataJson = localStorage.getItem("dataproduct");
     let obj =JSON.parse(dataJson)
     console.log(obj);
-    document.getElementById("test1").innerText = obj.map((product) => { product.prdname })
-    // obj.map((product) => { product.prdname })
+    count(obj)
+
     
+      
+    
+function count (myObj){
+    
+    for (let x in myObj) {
+
+      addtext(myObj[x])
+    }
+    
+    }
+
+    function addtext(data) {
+        let Allmight = document.createElement('div')
+        Allmight.classList.add("col")
+    
+        let one = document.createElement('div')
+        one.classList.add("card")
+    
+        let img = document.createElement('img')
+        img.classList.add("card-img-top")
+        let imgname = data.prdImageUrl
+        img.setAttribute('src', imgname)
+    
+        let inone = document.createElement('div')
+        inone.classList.add("card-body")
+        let H5 = document.createElement('h5')
+        H5.classList.add("card-title")
+        let name = data.prdname
+        H5.innerHTML = name
+        inone.appendChild(H5)   
+        one.appendChild(img)
+        one.appendChild(inone)
+        Allmight.appendChild(one)
+        output.appendChild(Allmight)
+    }
     
    
   

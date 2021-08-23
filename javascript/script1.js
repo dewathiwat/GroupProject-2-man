@@ -69,7 +69,7 @@ const getProductDetails = async () => {
     console.log(response)
     document.getElementById("allProduct").innerHTML = response.data
       .map(
-        (product) =>
+        (product) => 
           `
           <div class=" col-6 col-lg-4 col-xxl-3 mb-4">
                     <div class="card">
