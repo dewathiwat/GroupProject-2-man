@@ -38,7 +38,7 @@
 //     }
 //   };
 //   getProductBag();
-
+ output =document.getElementById('output')
 const dataJson = localStorage.getItem("dataproduct");
     let obj =JSON.parse(dataJson)
     console.log(obj);
@@ -58,13 +58,13 @@ function count (myObj){
 
     function addtext(data) {
         let Allmight = document.createElement('div')
-        Allmight.classList.add("col")
-    
+        Allmight.classList.add('row')
         let one = document.createElement('div')
-        one.classList.add("card")
-    
+        one.classList.add('col-4')
+        let two = document.createElement('div')
+        two.classList.add('col-8')
         let img = document.createElement('img')
-        img.classList.add("card-img-top")
+        img.classList.add("card-img")
         let imgname = data.prdImageUrl
         img.setAttribute('src', imgname)
     
@@ -76,8 +76,9 @@ function count (myObj){
         H5.innerHTML = name
         inone.appendChild(H5)   
         one.appendChild(img)
-        one.appendChild(inone)
+        two.appendChild(inone)
         Allmight.appendChild(one)
+        Allmight.appendChild(two)
         output.appendChild(Allmight)
     }
     
