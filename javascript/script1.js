@@ -66,9 +66,10 @@ const getProductDetails = async () => {
     const response = await axios.get(
       "https://6102d7aa79ed680017482359.mockapi.io/productlist"
     );
+    console.log(response)
     document.getElementById("allProduct").innerHTML = response.data
       .map(
-        (product) =>
+        (product) => 
           `
           <div class=" col-6 col-lg-4 col-xxl-3 mb-4">
                     <div class="card">
