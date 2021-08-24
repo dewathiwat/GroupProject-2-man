@@ -29,9 +29,12 @@ async function ShowDetail(data,searchParams) {
 
   document.getElementById("Detail").innerHTML = `
       
-<div class="col-6">
-<img src="${data.prdImageUrl}"> </div>
-<div class="col-6">
+
+<div class="card col-lg-7 col-xs-12">
+<img class="pic_select card-img-top" src="${data.prdImageUrl}" alt="Card image cap">
+</div>
+</div>
+<div class=" col-lg-4 col-xs-12">
 
 <h2>Product name: ${data.prdname}</h2>
 <h4 class="text-danger">${data.prdPrice} THB</h4>
@@ -44,11 +47,15 @@ Please Select
 ${text}
 
 </select> </div>
+<br>
 <button class="btn btn-dark text-white" onclick="${await setlocal(re)} ">Add To Bag</button>
-<h2>Product Details: ${data.txtDetail}</h2>
+<br>
+<br>
+
+<h5>Product Details: ${data.txtDetail}</h5>
 
 <button class="btn btn-secondary  text-dark"onclick="">show detail</button>
-
+</div>
 </div>
 </div>
 
@@ -67,13 +74,13 @@ function setlocal(data) {
   const oldProductCart = JSON.parse(localStorage.getItem("dataproduct"))
   const newProductCart = data
   if(oldProductCart==null){
-  let card=newProductCart
+  let card=newProductCart;
   localStorage.setItem("dataproduct", JSON.stringify(card))
-  alert('addproduct "Success1"')
+  // alert('addproduct "Success1"')
   }else{
   let card=oldProductCart.concat(newProductCart)
   localStorage.setItem("dataproduct", JSON.stringify(card))
-  alert('addproduct "Success2"')
+  // alert('addproduct "Success2"')
 }
 
 

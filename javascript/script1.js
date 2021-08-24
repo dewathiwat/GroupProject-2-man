@@ -85,6 +85,7 @@ const getProductDetails = async () => {
   </div>  
 </div>
 </div>
+
         `
       )
       .join("");
