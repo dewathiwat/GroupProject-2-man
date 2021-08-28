@@ -1,6 +1,20 @@
-.card-img-top {
-  height: 300px;
-  width: 300px;
+button {
+  width: 100%;
+}
+
+button.btn-secondary {
+  color: #fff;
+  background-color: black;
+  border-color: black;
+}
+
+.col-8, .col-4 {
+  margin-bottom: 50px;
+  margin-bottom: 50px;
+}
+
+img.picAll {
+  width: 100%;
 }
 
 .pic_select {
@@ -78,6 +92,12 @@ li.price {
   }
   .col {
     margin-left: 18%;
+  }
+  button.btndetail {
+    display: none;
+  }
+  .prddetailselect {
+    padding: 50px;
   }
 }
 /*# sourceMappingURL=style.css.map */
