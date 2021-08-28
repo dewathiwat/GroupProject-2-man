@@ -25,7 +25,7 @@ const getProductOneDetail = async () => {
 getProductOneDetail();
 let text = "";
 
-function ShowDetail(data,searchParams) {
+async function ShowDetail(data,searchParams) {
   console.log("show", data);
 
   data.prdSize.forEach(myFunction);
@@ -46,7 +46,7 @@ Please Select
 ${text}
 </select> </div>
 <br>
-<button class="btn btn-dark text-white"  id="demo" >Add To Bag</button>
+<button class="btn btn-dark text-white"  id="demo" onclick =${ await setlocal(re)}>Add To Bag</button>
 <br>
 <br>
 <h3>Product Details</h3>
@@ -73,7 +73,7 @@ function myFunction(item) {
 async function setlocal(data) {
   const oldProductCart = await JSON.parse(localStorage.getItem("dataproduct"))
   const newProductCart = data
-  if(oldProductCart==null){
+  if(oldProductCart==null || localStorage.getItem("dataproduct")==null){
   let card=newProductCart;
   localStorage.setItem("dataproduct", JSON.stringify(card))
   alert('addproduct "Success1"')
