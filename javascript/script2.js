@@ -1,12 +1,13 @@
 // !page 2
 let searchParams = new URLSearchParams(window.location.search).get("id");
 var re = "";
+
+
+
 const getProductOneDetail = async () => {
   console.log(searchParams);
   try {
-    const response = await axios.get(
-      "https://6102d7aa79ed680017482359.mockapi.io/productdetail"
-    );
+    const response = await axios.get("https://6102d7aa79ed680017482359.mockapi.io/productdetail");
     let resulte = response.data.filter((data) => {
       return data.id == searchParams;
     });
@@ -20,54 +21,60 @@ const getProductOneDetail = async () => {
     console.log(e.message);
   }
 };
+
 getProductOneDetail();
 let text = "";
-async function ShowDetail(data,searchParams) {
+
+function ShowDetail(data,searchParams) {
   console.log("show", data);
 
   data.prdSize.forEach(myFunction);
 
   document.getElementById("Detail").innerHTML = `
-      
-<div class="col-6">
-<img src="${data.prdImageUrl}"> </div>
-<div class="col-6">
-
+<div class="card col-lg-7 col-xs-12">
+<img class="pic_select card-img-top" src="${data.prdImageUrl}" alt="Card image cap">
+</div>
+</div>
+<div class=" col-lg-4 col-xs-12">
 <h2>Product name: ${data.prdname}</h2>
 <h4 class="text-danger">${data.prdPrice} THB</h4>
 <p class="text-secondary">Size</p>
 <div><select name="size" size="1">
 <option value="default" selected>
 Please Select
-
 </option>
 ${text}
-
 </select> </div>
-<button class="btn btn-dark text-white" onclick="${await setlocal(re)} ">Add To Bag</button>
-<h2>Product Details: ${data.txtDetail}</h2>
-
-<button class="btn btn-secondary  text-dark"onclick="">show detail</button>
-
+<br>
+<button class="btn btn-dark text-white"  id="demo" >Add To Bag</button>
+<br>
+<br>
+<h3>Product Details</h3>
+<h5>${data.txtDetail}</h5>
+<button class="btndetail btn btn-secondary  text-dark" id="myBtn"> show detail</button>
 </div>
 </div>
-
-
+</div>
         `
-  
 }
+
+
+
+
+
+
 
 function myFunction(item) {
   text += `<option value="${item}" >
   ${item}
-  
   </option> `
 }
-function setlocal(data) {
-  const oldProductCart = JSON.parse(localStorage.getItem("dataproduct"))
+
+async function setlocal(data) {
+  const oldProductCart = await JSON.parse(localStorage.getItem("dataproduct"))
   const newProductCart = data
   if(oldProductCart==null){
-  let card=newProductCart
+  let card=newProductCart;
   localStorage.setItem("dataproduct", JSON.stringify(card))
   alert('addproduct "Success1"')
   }else{

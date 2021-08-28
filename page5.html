@@ -1,0 +1,48 @@
+<html>
+<body>
+
+<h2>Store and retrieve data from local storage.</h2>
+<p id="demo"></p>
+
+
+
+<div id="result"></div>
+
+
+
+
+
+
+<script>
+
+
+    let a={"data":[{"id":"1"}]};
+
+
+    console.log(a);
+
+
+    // Store
+localStorage.setItem("id", 1);
+
+// Retrieve
+document.getElementById("result").innerHTML = localStorage.getItem("id");
+
+
+
+
+
+
+// Storing data:
+// const myObj = { name: "John", age: 31, city: "New York" };
+// const myJSON = JSON.stringify(myObj);
+// localStorage.setItem("testJSON", myJSON);
+
+// Retrieving data:
+let text = localStorage.getItem("dataproduct");
+let obj = JSON.parse(text);
+document.getElementById("demo").innerHTML = obj.prdname;
+</script>
+
+</body>
+</html>

@@ -1,17 +1,38 @@
-.card-img-top {
-    height: 300px;
-    width: 270px;
+// !Page 1
+button{
+    width: 100%;
+}
+button.btn-secondary {
+    color: #fff;
+    background-color: black;
+    border-color: black;
+}
+// .card-img-top {
+//     height: 300px;
+//     width: 300px;
+// }
+.col-8,.col-4{
+   margin-bottom: 50px;
+   margin-bottom: 50px;
+
+}
+img.picAll{
+    width:100%;
 }
 
-.row {
-    margin-bottom: 50px;
+
+
+// !page 2
+.pic_select{
+    height: 80%;
+    width: 500px;
 }
 
 //dev-doom work
-img.carouselimg {
-    height: 675px;
-    width: 100%;
-}
+// img.carouselimg, .card-img-top{
+//     height: 500px;
+//     width: 100%;
+// }
 
 p.sideH {
     margin-bottom: 7rem;
@@ -64,21 +85,19 @@ li.price {
 
 
 
+// !page 4
+
 
 
 
 // todo All product
 .product-add{
 width: 100%;
-li.add{
-   
 
-}
 }
 @media only screen and (max-width: 600px){
-    //Dew
-
-   
+ 
+// Navbar
     header {
        
         .xx{
@@ -97,19 +116,25 @@ li.add{
 color: black;
     }
 
-    //Doom
+   
     img.carouselimg {
         height: 496px;
         width: 100%;
     }
-
-    //Frist
 
     .col{
         margin-left: 18%;
         
 
     }
-    
+// ------------------------------------------------------------------------------------------------------------------------------------------
+
+// Page 2
+    button.btndetail{
+        display: none;
+    }
+    .prddetailselect{
+      padding: 50px;
+    }
 }
 

@@ -73,19 +73,32 @@ const getProductDetails = async () => {
           `
           <div class=" col-6 col-lg-4 col-xxl-3 mb-4">
                     <div class="card">
-                    <img class="card-img-top" src="${product.prdImageUrl}" alt="Card image cap">
+                    <img class="picAll card-img-top" src="${product.prdImageUrl}" alt="Card image cap">
                     <div class="card-body">
     <h6 class="card-title">${product.prdname}</h6>
-    <div class="price-add ">
+    <br>
+    <div class="row ">
+
+    <div class="col-6 ">
+
+    <p class="fs-5 text-danger">${product.prdPrice} THB</p>
     
-    
-    <li class="card-text text-danger">${product.prdPrice} THB</li>
-    <li class="add btn btn-dark " onclick="location.href= 'page2.html?id=${product.id}'";>ADD</li>
-    
+    </div> 
+    <div class="col-6 align-self-end">
+   
+    <button type="button" class="btn btn-secondary "  onclick="location.href= 'page2.html?id=${product.id}'";>ADD      </button>
+    </div>   
     </div>  
+
+
+
+
+
+   
   </div>  
 </div>
 </div>
+
         `
       )
       .join("");
