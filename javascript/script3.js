@@ -8,7 +8,10 @@ count(obj);
 
 function count(myObj) {
   for (let x in myObj) {
-    addtext(myObj[x]);
+    if(myObj[x]){
+        addtext(myObj[x],x);
+    }
+    
   }
   addpay()
 }
@@ -73,7 +76,7 @@ ulPay.appendChild(buttonPay)
 
 
 
-function addtext(data) {
+async function addtext(data,x) {
 
 
   let section = document.querySelector("aside"); // กล่องด้านนอก
@@ -137,6 +140,7 @@ qtyOptionsize.setAttribute("value",prdSize)
   pRemove.setAttribute("href","page1.html")
   pRemove.textContent = "Remove this item";
   pRemove.style.color="red";
+  pRemove.addEventListener('click', alert('add'))
 
  
   let selectSizeDiv = document.createElement("div");
@@ -198,4 +202,9 @@ divContentCol.appendChild(pRemove)
 
 
 
+}
+function remove(x){
+  // delete obj[x]
+  // localStorage.setItem("dataproduct", JSON.stringify(obj))
+  alert('re')
 }
