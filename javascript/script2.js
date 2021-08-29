@@ -46,7 +46,7 @@ ${text}
 </select> </div>
 <br>
 <div id="butt">
-<button class="btn btn-dark text-white"  id="demo" onclick ="" >Add To Bag</button>
+<button class="btn btn-dark text-white"  id="demo" onclick ="${()=>{setlocal(re)}}" >Add To Bag</button>
 </div>
 <br>
 <br>
@@ -60,13 +60,7 @@ ${text}
         
 }
 
-let butta = document.createElement('button')
-butta.classList.add('btn')
-butta.classList.add('btn-dark')
-butta.classList.add('text-white')
-butta.textContent ='Add to Bag'
-butta.addEventListener('click',()=>{setlocal(re)})
-document.getElementById('butt').appendChild()
+
 
 
 
