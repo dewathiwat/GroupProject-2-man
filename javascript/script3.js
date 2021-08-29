@@ -62,6 +62,7 @@ function addpay() {
 
 
 async function addtext(data, x) {
+  let quantity =[1,2,3,4,5,6,7,8,9,10]
   let qty=1
   let section = document.querySelector("aside"); // กล่องด้านนอก
   section.classList.add("row");
@@ -107,14 +108,16 @@ async function addtext(data, x) {
 
   let qtyDisplay = document.createElement("select");
   //   let prdSize = data.prdSize;
-  let qtyOption = document.createElement("option");
-  qtyOption.setAttribute("value", "defult");
   qtyDisplay.setAttribute("name", "size");
-  qtyOption.textContent = "PLESE SELECTED";
-  let qtyOptionsize = document.createElement("option");
-  let prdSize = data.prdSize;
-  qtyOptionsize.setAttribute("value", prdSize);
-
+  // <---------------------------------------------------------------------->
+  quantity.forEach((e)=>{
+    console.log(e)
+    let opt =document.createElement('option')
+    opt.setAttribute('value',e)
+    opt.textContent=e
+    qtyDisplay.appendChild(opt)
+  })
+// <---------------------------------------------------------------------------->
   let pRemove = document.createElement("a");
    pRemove.setAttribute("href","page3.html")
   pRemove.textContent = "Remove this item";
@@ -168,9 +171,9 @@ async function addtext(data, x) {
   divselectQty.appendChild(pQty);
 
   divselectQty.appendChild(qtyDisplay);
-  qtyDisplay.appendChild(qtyOption);
-  qtyDisplay.appendChild(qtyOptionsize);
+  
+  
 
   divContentCol.appendChild(pRemove);
-  return (qty*prdPrice);
+  
 }
