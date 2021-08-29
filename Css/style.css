@@ -1,3 +1,7 @@
+* {
+  outline: none;
+}
+
 button {
   width: 100%;
 }
@@ -78,23 +82,32 @@ input[type=text], i {
 
 span.pay3 {
   font-size: 12px;
-  text-decoration: none;
-  color: #000000;
-  
 }
 
-
+a {
+  text-decoration: none;
+  color: #ff0909;
+}
 
 i {
   color: #000;
   font-size: 1em;
 }
 
+.col input[type=text]:focus {
+  background-color: white;
+  outline: none;
+}
+
+span.pay3 {
+  text-decoration: none;
+}
+
 .product-add {
   width: 100%;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 800px) {
   header .xx {
     background-color: #fdfdfd;
   }
@@ -119,6 +132,15 @@ i {
   }
   .prddetailselect {
     padding: 50px;
+  }
+  .summary4 {
+    display: none;
+  }
+  button.bttRe {
+    width: 100%;
+  }
+  .show4 {
+    display: inline-block;
   }
 }
 /*# sourceMappingURL=style.css.map */

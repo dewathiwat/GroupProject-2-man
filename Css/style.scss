@@ -1,3 +1,8 @@
+*{
+    outline:none;
+   
+    
+}
 // !Page 1
 button{
     width: 100%;
@@ -96,7 +101,7 @@ span.pay3{
     font-size: 12px;
 }
   a{
-      text-decoration: none;
+    text-decoration: none;
     color: rgb(255, 9, 9);
   }
   i{
@@ -105,14 +110,21 @@ span.pay3{
       font-size: 1em;
   }
 
-
+.col input[type=text]:focus{
+        background-color: rgb(255, 255, 255);
+        outline:none
+      }
+  
+span.pay3{
+    text-decoration: none;
+}
 
 // todo All product
 .product-add{
 width: 100%;
 
 }
-@media only screen and (max-width: 600px){
+@media only screen and (max-width: 800px){
  
 // Navbar
     header {
@@ -152,6 +164,17 @@ color: black;
     }
     .prddetailselect{
       padding: 50px;
+    }
+
+    // page 4
+    .summary4{
+          display: none;
+    }
+    button.bttRe{
+        width: 100%;
+    }
+    .show4{
+        display: inline-block;
     }
 }
 
