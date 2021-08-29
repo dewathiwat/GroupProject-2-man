@@ -46,7 +46,7 @@ ${text}
 </select> </div>
 <br>
 <div id="butt">
-<button class="btn btn-dark text-white"  id="demo" onclick ="${()=>{setlocal(re)}}" >Add To Bag</button>
+<button class="btn btn-dark text-white"  id="demo" onclick ="${setlocal(re)}}" >Add To Bag</button>
 </div>
 <br>
 <br>
