@@ -34,7 +34,6 @@ async function ShowDetail(data,searchParams) {
 <div class="card col-lg-7 col-xs-12">
 <img class="pic_select card-img-top" src="${data.prdImageUrl}" alt="Card image cap">
 </div>
-</div>
 <div class=" col-lg-4 col-xs-12">
 <h2>Product name: ${data.prdname}</h2>
 <h4 class="text-danger">${data.prdPrice} THB</h4>
@@ -46,7 +45,9 @@ Please Select
 ${text}
 </select> </div>
 <br>
-<button class="btn btn-dark text-white"  id="demo" onclick =${ await setlocal(re)}>Add To Bag</button>
+<div id="butt">
+<button class="btn btn-dark text-white"  id="demo" onclick ="" >Add To Bag</button>
+</div>
 <br>
 <br>
 <h3>Product Details</h3>
@@ -56,7 +57,16 @@ ${text}
 </div>
 </div>
         `
+        
 }
+
+let butta = document.createElement('button')
+butta.classList.add('btn')
+butta.classList.add('btn-dark')
+butta.classList.add('text-white')
+butta.textContent ='Add to Bag'
+butta.addEventListener('click',()=>{setlocal(re)})
+document.getElementById('butt').appendChild()
 
 
 
