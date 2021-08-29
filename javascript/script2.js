@@ -1,6 +1,8 @@
-// !page 2
-let searchParams = new URLSearchParams(window.location.search).get("id");
+
+
+  let searchParams = new URLSearchParams(window.location.search).get("id");
 var re = "";
+
 
 
 
@@ -21,58 +23,8 @@ const getProductOneDetail = async () => {
     console.log(e.message);
   }
 };
-
 getProductOneDetail();
 let text = "";
-
-async function ShowDetail(data,searchParams) {
-  console.log("show", data);
-
-  data.prdSize.forEach(myFunction);
-
-  document.getElementById("Detail").innerHTML = `
-<div class="card col-lg-7 col-xs-12">
-<img class="pic_select card-img-top" src="${data.prdImageUrl}" alt="Card image cap">
-</div>
-<div class=" col-lg-4 col-xs-12">
-<h2>Product name: ${data.prdname}</h2>
-<h4 class="text-danger">${data.prdPrice} THB</h4>
-<p class="text-secondary">Size</p>
-<div><select name="size" size="1">
-<option value="default" selected>
-Please Select
-</option>
-${text}
-</select> </div>
-<br>
-<div id="butt">
-<button class="btn btn-dark text-white"  id="demo" onclick ="${setlocal(re)}}" >Add To Bag</button>
-</div>
-<br>
-<br>
-<h3>Product Details</h3>
-<h5>${data.txtDetail}</h5>
-<button class="btndetail btn btn-secondary  text-dark" id="myBtn"> show detail</button>
-</div>
-</div>
-</div>
-        `
-        
-}
-
-
-
-
-
-
-
-
-
-function myFunction(item) {
-  text += `<option value="${item}" >
-  ${item}
-  </option> `
-}
 
 async function setlocal(data) {
   const oldProductCart = await JSON.parse(localStorage.getItem("dataproduct"))
@@ -89,3 +41,96 @@ async function setlocal(data) {
 
 
   };
+
+
+
+  function myFunction(item) {
+    text += `<option value="${item}" >
+    ${item}
+    </option> `
+  }
+
+
+  function count(myObj) {
+    for (let x in myObj) {
+      if(myObj[x]){
+          addtext(myObj[x],x);
+      }
+      
+    }
+    addpay()
+  }
+  async function addtext(data,searchParams) {
+  let divAll=document.getElementById("demo")
+let divPic=document.createElement("div");
+divPic.classList.add("card")
+divPic.classList.add("col-lg-7")
+divPic.classList.add("col-xs-12")
+let imgPrd=document.createElement("img")
+imgPrd.setAttribute("src",data.prdImageUrl)
+imgPrd.classList.add("pic_select")
+imgPrd.classList.add("card-img-top")
+
+divCon=document.createElement("div")
+divCon.classList.add("col-lg-4")
+divCon.classList.add("col-xs-12")
+let prdName=document.createElement("h2")
+prdName.textContent= "Product name: "
+let prdPrice=document.createElement("h4")
+prdPrice.classList.add("text-danger")
+let tPrice = "THB";
+prdPrice.textContent=tPrice
+let pSize = document.createElement("p")
+pSize.classList.add("text-secondary")
+pSize.textContent="Size"
+let optionSize = document.createElement("option")
+let selectSize = document.createElement("select")
+selectSize.setAttribute("name","size")
+selectSize.setAttribute("size","1")
+
+
+optionSize.setAttribute("value","default")
+optionSize.classList.add("selected")
+optionSize.textContent="Pleases Select"
+
+let bttAddBag =document.createElement("button")
+bttAddBag.classList.add("btn")
+bttAddBag.classList.add("btn-dark")
+bttAddBag.classList.add("text-white")
+
+bttAddBag.setAttribute("id","addToBag")
+bttAddBag.textContent="Add To Bag"
+bttAddBag.setAttribute("id","myBtn")
+let tPrdDetail =document.createElement("h3")
+tPrdDetail.textContent="Product Details";
+
+
+let bttShowDetai = document.createElement("button")
+bttShowDetai.classList.add("btndetail")
+bttShowDetai.classList.add("btn")
+bttShowDetai.classList.add("btn-secondary")
+bttShowDetai.classList.add("text-dark")
+
+
+bttShowDetai.textContent="Show detail";
+
+
+
+
+
+divPic.appendChild(imgPrd);
+divAll.appendChild(divPic);
+divPic.appendChild(imgPrd)
+divAll.appendChild(divCon)
+divCon.appendChild(prdName)
+divCon.appendChild(prdPrice)
+divCon.appendChild(pSize)
+divCon.appendChild(selectSize)
+selectSize.appendChild(optionSize)
+divCon.appendChild(bttAddBag)
+divCon.appendChild(tPrdDetail)
+divCon.appendChild(bttShowDetai)
+
+
+
+}
