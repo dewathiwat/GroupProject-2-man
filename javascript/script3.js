@@ -3,13 +3,14 @@
 output = document.getElementById("output");
 const dataJson = localStorage.getItem("dataproduct");
 let obj = JSON.parse(dataJson);
+var totalprice = 0
 console.log(obj);
 count(obj);
 
 function count(myObj) {
   for (let x in myObj) {
     if (myObj[x]) {
-      addtext(myObj[x], x);
+    addtext(myObj[x], x);
     }
   }
   addpay();
@@ -46,7 +47,7 @@ function addpay() {
   liPay2.appendChild(p1);
   p1.textContent = "Subtotal";
   liPay3.appendChild(p2);
-  p2.textContent = "total";
+  p2.textContent = `total ${totalprice}`;
 
   let contentPay = document.querySelector(".pay");
   contentPay.appendChild(divPayContent);
@@ -58,13 +59,11 @@ function addpay() {
   ulPay.appendChild(buttonPay);
 }
 
-// function myFunction(data) {
-//   text += `<option value="${data}" >
-//   ${item}
-//   </option> `
-// }
+
 
 async function addtext(data, x) {
+  let quantity =[1,2,3,4,5,6,7,8,9,10]
+  let qty=1
   let section = document.querySelector("aside"); // กล่องด้านนอก
   section.classList.add("row");
   let divAllContent = document.createElement("div");
@@ -109,16 +108,18 @@ async function addtext(data, x) {
 
   let qtyDisplay = document.createElement("select");
   //   let prdSize = data.prdSize;
-  let qtyOption = document.createElement("option");
-  qtyOption.setAttribute("value", "defult");
   qtyDisplay.setAttribute("name", "size");
-  qtyOption.textContent = "PLESE SELECTED";
-  let qtyOptionsize = document.createElement("option");
-  let prdSize = data.prdSize;
-  qtyOptionsize.setAttribute("value", prdSize);
-
+  // <---------------------------------------------------------------------->
+  quantity.forEach((e)=>{
+    console.log(e)
+    let opt =document.createElement('option')
+    opt.setAttribute('value',e)
+    opt.textContent=e
+    qtyDisplay.appendChild(opt)
+  })
+// <---------------------------------------------------------------------------->
   let pRemove = document.createElement("a");
-  // pRemove.setAttribute("href","page1.html")
+   pRemove.setAttribute("href","page3.html")
   pRemove.textContent = "Remove this item";
   pRemove.style.color = "red";
   pRemove.addEventListener("click", () => {
@@ -144,10 +145,11 @@ async function addtext(data, x) {
   let headName = document.createElement("h3");
   let priceName = document.createElement("h2");
   let prdname = data.prdname;
-  let prdPrice = data.prdPrice;
+  let prdPrice = parseInt(data.prdPrice);
   priceName.textContent = prdPrice + " THB";
   priceName.style.color = "red";
   headName.textContent = prdname;
+  totalprice += prdPrice
 
   // จัดของใส่กล่อง
   // let section = document.querySelector("aside");
@@ -169,8 +171,9 @@ async function addtext(data, x) {
   divselectQty.appendChild(pQty);
 
   divselectQty.appendChild(qtyDisplay);
-  qtyDisplay.appendChild(qtyOption);
-  qtyDisplay.appendChild(qtyOptionsize);
+  
+  
 
   divContentCol.appendChild(pRemove);
+  
 }
