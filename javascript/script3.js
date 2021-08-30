@@ -39,8 +39,9 @@ function addpay() {
   let p1 = document.createElement("p");
   let p2 = document.createElement("p");
   p2.classList.add("ttp");
+  let a = document.createElement('a')
+  a.setAttribute("href","page4.html")
   let buttonPay = document.createElement("button");
-  buttonPay.setAttribute("href","page4.html");
   buttonPay.classList.add("btn");
   buttonPay.classList.add("btn-secondary");
   buttonPay.classList.add("btn-block");
@@ -48,6 +49,8 @@ function addpay() {
   buttonPay.addEventListener('click',()=>{
     localStorage.setItem('totalprice',totalprice)
   })
+  a.appendChild(buttonPay)
+
 
   liPay.appendChild(h3);
   h3.textContent = "sunmary";
@@ -63,7 +66,7 @@ function addpay() {
   ulPay.appendChild(liPay);
   ulPay.appendChild(liPay2);
   ulPay.appendChild(liPay3);
-  ulPay.appendChild(buttonPay);
+  ulPay.appendChild(a);
 }
 
 async function addtext(data, x) {
