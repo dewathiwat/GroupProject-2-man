@@ -60,6 +60,25 @@
 // };
 // getProductSlide();
 
+async function getslid_show(){
+  const response = await axios.get("https://6102d7aa79ed680017482359.mockapi.io/slider");
+  console.log(response)
+
+  document.getElementById('slid_img1').setAttribute("src", response.data[0].imageUrl)
+  document.getElementById('slid_text1').innerHTML = response.data[0].sliderText
+
+  document.getElementById('slid_img2').setAttribute("src", response.data[1].imageUrl)
+  document.getElementById('slid_text2').innerHTML = response.data[1].sliderText
+
+  document.getElementById('slid_img3').setAttribute("src", response.data[2].imageUrl)
+  document.getElementById('slid_text3').innerHTML = response.data[2].sliderText
+
+  document.getElementById('slid_img4').setAttribute("src", response.data[3].imageUrl)
+  document.getElementById('slid_text4').innerHTML = response.data[3].sliderText
+
+}
+
+
 //todo All product
 const getProductDetails = async () => {
   try {
@@ -107,7 +126,7 @@ const getProductDetails = async () => {
   }
 };
 getProductDetails();
-
+getslid_show();
 
 
 
