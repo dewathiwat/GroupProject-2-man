@@ -3,22 +3,22 @@
 output = document.getElementById("output");
 const dataJson = localStorage.getItem("dataproduct");
 let obj = JSON.parse(dataJson);
-var totalprice = 0
+var totalprice = 0;
+var total = 0;
 console.log(obj);
 count(obj);
 var totalPrice = 0;
 function count(myObj) {
-  totalPrice = 0
+  totalPrice = 0;
   for (let x in myObj) {
     if (myObj[x]) {
-    addtext(myObj[x], x);
+      addtext(myObj[x], x);
     }
   }
-  addpay(totalPrice);
+  addpay();
 }
 
-function addpay(totalPrice) {
-  
+function addpay() {
   //! กล่องที่ 2
   let divPay = document.createElement("div"); //กล่องที่ 2
   divPay.classList.add("col-2");
@@ -38,12 +38,16 @@ function addpay(totalPrice) {
   let h3 = document.createElement("h3");
   let p1 = document.createElement("p");
   let p2 = document.createElement("p");
+  p2.classList.add("ttp");
   let buttonPay = document.createElement("button");
-  buttonPay.setAttribute("type", "button");
+  buttonPay.setAttribute("href","page4.html");
   buttonPay.classList.add("btn");
   buttonPay.classList.add("btn-secondary");
   buttonPay.classList.add("btn-block");
   buttonPay.textContent = "Checkout";
+  buttonPay.addEventListener('click',()=>{
+    localStorage.setItem('totalprice',totalprice)
+  })
 
   liPay.appendChild(h3);
   h3.textContent = "sunmary";
@@ -62,11 +66,8 @@ function addpay(totalPrice) {
   ulPay.appendChild(buttonPay);
 }
 
-
-
 async function addtext(data, x) {
-  let quantity =[1,2,3,4,5,6,7,8,9,10]
-  let qty=1
+  let qty = 1;
   let section = document.querySelector("aside"); // กล่องด้านนอก
   section.classList.add("row");
   let divAllContent = document.createElement("div");
@@ -106,38 +107,42 @@ async function addtext(data, x) {
   let sizeOption = document.createElement("option");
 
   // sizeDisplay.setAttribute("name", "size");
-   sizeOption.textContent = "PLESE SELECTED";
+  sizeOption.textContent = "PLESE SELECTED";
 
   sizeOption.setAttribute("value", "defult");
-   data.prdSize.forEach(element => {
-     let num=[]
-  //   console.log(element)
-     num[element] = document.createElement('option')
-     num[element].setAttribute("value", element);
-     num[element].textContent = element;
-     console.log(num[element])
-     sizeDisplay.innerHTML =num[element]
-     
-   });
-   
- 
+  data.prdSize.forEach((element) => {
+    let num = [];
+    //   console.log(element)
+    num[element] = document.createElement("option");
+    num[element].setAttribute("value", element);
+    num[element].textContent = element;
+    console.log(num[element]);
+    sizeDisplay.innerHTML = num[element];
+  });
+
   //  ตัวเลือก QTY
 
-  let qtyDisplay = document.createElement("select");
-  //   let prdSize = data.prdSize;
-  qtyDisplay.setAttribute("name", "size");
   // <---------------------------------------------------------------------->
-  quantity.forEach((e)=>{
-    console.log(e)
-    let opt =document.createElement('option')
-    
-    opt.setAttribute('value',e)
-    opt.textContent=e
-    qtyDisplay.appendChild(opt)
-  })
-// <---------------------------------------------------------------------------->
+  let opt = document.createElement("input");
+  opt.classList.add("cart-quantity-input");
+  opt.setAttribute("type", "number");
+  opt.setAttribute("value", "1");
+  opt.addEventListener("change", (e) => {
+    var input = e.target;
+    // console.log(input.value);
+    if (isNaN(input.value) || input.value <= 0) {
+      input.value = 1;
+    }
+    // updateCartTotal(input.value,prdPrice);
+    qty = input.value;
+    // console.log(qty);
+    // totalprice += prdPrice * qty;
+    // console.log(qty, totalprice);
+    // document.getElementsByClassName('tpp').innerHTML=''
+  });
+  // <---------------------------------------------------------------------------->
   let pRemove = document.createElement("a");
-   pRemove.setAttribute("href","page3.html")
+  pRemove.setAttribute("href", "page3.html");
   pRemove.textContent = "Remove this item";
   pRemove.style.color = "red";
   pRemove.addEventListener("click", () => {
@@ -167,7 +172,8 @@ async function addtext(data, x) {
   priceName.textContent = prdPrice + " THB";
   priceName.style.color = "red";
   headName.textContent = prdname;
-  totalprice += prdPrice
+  totalprice += prdPrice * qty;
+  console.log(qty, totalprice);
 
   // จัดของใส่กล่อง
   // let section = document.querySelector("aside");
@@ -188,10 +194,15 @@ async function addtext(data, x) {
   divselectqtyandsize.appendChild(divselectQty);
   divselectQty.appendChild(pQty);
 
-  divselectQty.appendChild(qtyDisplay);
-  
-  
+  divselectQty.appendChild(opt);
 
   divContentCol.appendChild(pRemove);
-  
 }
+
+// function updateCartTotal(input,price) {
+//   var quantity = input;
+//   console.log(quantity,price);
+//   total = total + price * quantity;
+//   document.getElementsByClassName('ttp').textContent= total
+//   console.log(total);
+// }
