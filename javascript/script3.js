@@ -7,17 +7,15 @@ var total = 0;
 // console.log(obj);
 // count(obj);
 var totalPrice = 0;
-var i = 0;
+var i=0
 const getProductDetails = async () => {
   try {
-    document.getElementById("allProduct").innerHTML = obj
-      .map(
+   let allProduct = document.getElementById("allProduct")
+    allProduct.innerHTML = obj.map( 
         (product) =>
           ` 
-        
-          <div class="displayNone"> ${(i += 1)} </div>
-          <div class="displayNone"> ${console.log(i)} </div>
-
+          
+          
           
           
           
@@ -49,23 +47,25 @@ const getProductDetails = async () => {
                   <input class="cart-quantity-input" type="number" value="1">
                 </div>
               </div>
-              <a href="page3.html" style="color: red; id="pRemove">Remove this item</a>
+              <a  style="color: red; id="pRemove" onclick="remove()">Remove this item</a>
             </div>
           </div> 
        
         </div> 
 
         
+              
 
-
-     
+          
 
         `
+        
       )
-      .join("");
+      .join("");      
   } catch (e) {
     console.log(e.message);
   }
+
 };
 getProductDetails();
 // getslid_show();
@@ -77,9 +77,9 @@ getProductDetails();
 //   document.getElementsByClassName('ttp').textContent= total
 //   console.log(total);
 // }
-document.getElementById("pRemove").onclick = () => {
-  delete obj[x];
-  localStorage.setItem("dataproduct", JSON.stringify(obj));
-  console.log("", x);
-  alert("re");
+remove = (i) => {
+  // delete obj[x];
+  // localStorage.setItem("dataproduct", JSON.stringify(obj));
+  // console.log("", x);
+  console.log(i);
 }
