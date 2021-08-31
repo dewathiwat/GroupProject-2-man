@@ -44,14 +44,14 @@ async function ShowDetail(data, searchParams) {
           </option> `;
   }
   console.log("show", data);
-  await data.prdSize.map(myFunction);
+  data.prdSize.map(myFunction);
   
   document.getElementById('prdImg').innerHTML = `<img class="pic_select card-img-top" src="${data.prdImageUrl}" alt="Card image cap">`
   document.getElementById('prdName').innerHTML = data.prdname
   document.getElementById('prdPrice').innerHTML =`${data.prdPrice} THB`
   document.getElementById('prdSize').innerHTML= Size
   document.getElementById('prdDetail').innerHTML=data.txtDetail
-  document.getElementById('AddtoBag').onclick=()=>{ setlocal(re) }
+  document.getElementById('demo').addEventListener('click',()=>{ setlocal(re) })
 
 
 }
