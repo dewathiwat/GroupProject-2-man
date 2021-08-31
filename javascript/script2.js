@@ -2,7 +2,6 @@ let searchParams = new URLSearchParams(window.location.search).get("id");
 var re = "";
 
 const getProductOneDetail = async () => {
-  console.log(searchParams);
   try {
     const response = await axios.get(
       "https://6102d7aa79ed680017482359.mockapi.io/productdetail"
@@ -11,8 +10,6 @@ const getProductOneDetail = async () => {
       return data.id == searchParams;
     });
     re = resulte;
-    console.log(resulte);
-    console.log("re", re);
     for (data of resulte) {
       ShowDetail(data, searchParams);
     }
@@ -23,12 +20,9 @@ const getProductOneDetail = async () => {
 getProductOneDetail();
 
 async function setlocal(data,size) {
-  console.log(data)
   data[0].prdSize = size
-  
   const oldProductCart = await JSON.parse(localStorage.getItem("dataproduct"));
   const newProductCart = data;
-  console.log(data)
   if (oldProductCart == null || localStorage.getItem("dataproduct") == [null]) {
     let card = newProductCart;
     localStorage.setItem("dataproduct", JSON.stringify(card));
@@ -47,7 +41,6 @@ async function ShowDetail(data, searchParams) {
           ${item}
           </option> `;
   }
-  console.log("show", data);
   await data.prdSize.map(myFunction);
   
   document.getElementById('prdImg').innerHTML = `<img class="pic_select card-img-top" src="${data.prdImageUrl}" alt="Card image cap">`
