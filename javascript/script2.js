@@ -23,13 +23,13 @@ async function setlocal(data, size) {
   const newProductCart = data;
   if (oldProductCart == null || localStorage.getItem("dataproduct") == [null]) {
     let card = newProductCart;
-    localStorage.setItem("dataproduct", JSON.stringify(card));
-    
+    localStorage.setItem("dataproduct", JSON.stringify(card));   
   } else {
     let card = oldProductCart.concat(newProductCart);
     localStorage.setItem("dataproduct", JSON.stringify(card));
-    alert('Addproduct "Success2"');
+    
   }
+  alert('Addproduct to Cart "Success"');
 }
 async function ShowDetail(data, searchParams) {
   let Size = "<option value=default selected> Please Select </option> ";
