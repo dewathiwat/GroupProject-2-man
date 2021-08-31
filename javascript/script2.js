@@ -22,9 +22,13 @@ const getProductOneDetail = async () => {
 };
 getProductOneDetail();
 
-async function setlocal(data) {
+async function setlocal(data,size) {
+  console.log(data)
+  data[0].prdSize = size
+  
   const oldProductCart = await JSON.parse(localStorage.getItem("dataproduct"));
   const newProductCart = data;
+  console.log(data)
   if (oldProductCart == null || localStorage.getItem("dataproduct") == [null]) {
     let card = newProductCart;
     localStorage.setItem("dataproduct", JSON.stringify(card));
@@ -34,7 +38,7 @@ async function setlocal(data) {
     localStorage.setItem("dataproduct", JSON.stringify(card));
     alert('addproduct "Success2"');
   }
-}
+ }
 
 async function ShowDetail(data, searchParams) {
   let Size = "<option value=default selected> Please Select </option> "
@@ -51,7 +55,15 @@ async function ShowDetail(data, searchParams) {
   document.getElementById('prdPrice').innerHTML =`${data.prdPrice} THB`
   document.getElementById('prdSize').innerHTML= Size
   document.getElementById('prdDetail').innerHTML=data.txtDetail
-  document.getElementById('AddtoBag').onclick=()=>{ setlocal(re) }
+  document.getElementById('AddtoBag').onclick=()=>{ 
+    let e = document.getElementById('prdSize').value
+    if(e !="default"){
+      setlocal(re,e)
+    }else{
+      alert('Please Select Size !!!')
+    }
+    }
+   
 
 
 }
