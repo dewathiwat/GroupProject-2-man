@@ -1,6 +1,8 @@
 *{
     outline:none;
-   
+    .show4{
+        display: none;
+    }
     
 }
 // !Page 1
@@ -167,14 +169,22 @@ color: black;
     }
 
     // page 4
-    .summary4{
-          display: none;
-    }
+  
     button.bttRe{
         width: 100%;
     }
     .show4{
         display: inline-block;
     }
+    .summary4{
+        display: none;
+  }
+//   input[type=number] {
+//         width: auto;
+//         padding: 12px 20px;
+//         margin: 8px 0;
+//         box-sizing: border-box;
+//       }
+  
 }
 

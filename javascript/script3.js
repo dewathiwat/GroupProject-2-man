@@ -70,6 +70,8 @@ function addpay() {
 }
 
 async function addtext(data, x) {
+  let subtotal =document.getElementById('subtotal')
+subtotal.textContent =data.prdPrice+"THB"
   let qty = 1;
   let section = document.querySelector("aside"); // กล่องด้านนอก
   section.classList.add("row");
@@ -127,6 +129,8 @@ async function addtext(data, x) {
 
   // <---------------------------------------------------------------------->
   let opt = document.createElement("input");
+ 
+
   opt.classList.add("cart-quantity-input");
   opt.setAttribute("type", "number");
   opt.setAttribute("value", "1");

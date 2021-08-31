@@ -76,7 +76,8 @@ async function ShowDetail(data, searchParams) {
     selectSize.appendChild(otp[e])
     
   })
-
+let ahref =document.createElement("a");
+ahref.setAttribute("href","page3.html")
   let bttAddBag = document.createElement("button");
   bttAddBag.classList.add("btn");
   bttAddBag.classList.add("btn-dark");
@@ -98,6 +99,7 @@ async function ShowDetail(data, searchParams) {
   bttShowDetai.classList.add("text-dark");
 
   bttShowDetai.textContent = "Show detail";
+let br =document.createElement('br')
 
   divPic.appendChild(imgPrd);
   divAll.appendChild(divPic);
@@ -107,7 +109,11 @@ async function ShowDetail(data, searchParams) {
   divCon.appendChild(prdPrice);
   divCon.appendChild(pSize);
   divCon.appendChild(selectSize);
-  divCon.appendChild(bttAddBag);
+  divCon.appendChild(ahref)
+  ahref.appendChild(bttAddBag)
+ 
+  // divCon.appendChild(bttAddBag);
+
   divCon.appendChild(tPrdDetail);
   divCon.appendChild(prePrdDetail)
   divCon.appendChild(bttShowDetai);
