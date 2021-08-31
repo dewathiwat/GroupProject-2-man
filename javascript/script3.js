@@ -11,7 +11,7 @@ var totalPrice = 0;
 const getProductDetails = async () => {
   try {
    
-    document.getElementById("allProduct").innerHTML = obj.data.map((product) =>
+    document.getElementById("allProduct").innerHTML = obj.map((product) =>
     
     
           ` 
@@ -33,8 +33,8 @@ const getProductDetails = async () => {
                 <div class="col-6">
                   <p>Size</p>
                   <select name="size" size="1" id="prdSize">
-                    <option value="default" selected>
-                      Please Select
+                    <option value="${product.prdSize}" selected>
+                    ${product.prdSize}
                     </option>
                   </select>
                 </div>
@@ -44,7 +44,7 @@ const getProductDetails = async () => {
                   <input class="cart-quantity-input" type="number" value="1">
                 </div>
               </div>
-              <a href="page3.html" style="color: red;">Remove this item</a>
+              <a href="page3.html" style="color: red; ">Remove this item</a>
             </div>
           </div> 
        
