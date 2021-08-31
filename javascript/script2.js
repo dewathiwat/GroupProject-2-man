@@ -1,6 +1,5 @@
 let searchParams = new URLSearchParams(window.location.search).get("id");
 var re = "";
-
 const getProductOneDetail = async () => {
   try {
     const response = await axios.get(
@@ -18,9 +17,8 @@ const getProductOneDetail = async () => {
   }
 };
 getProductOneDetail();
-
-async function setlocal(data,size) {
-  data[0].prdSize = size
+async function setlocal(data, size) {
+  data[0].prdSize = size;
   const oldProductCart = await JSON.parse(localStorage.getItem("dataproduct"));
   const newProductCart = data;
   if (oldProductCart == null || localStorage.getItem("dataproduct") == [null]) {
@@ -32,31 +30,26 @@ async function setlocal(data,size) {
     localStorage.setItem("dataproduct", JSON.stringify(card));
     alert('addproduct "Success2"');
   }
- }
-
+}
 async function ShowDetail(data, searchParams) {
-  let Size = "<option value=default selected> Please Select </option> "
+  let Size = "<option value=default selected> Please Select </option> ";
   function myFunction(item) {
     Size += `<option value="${item}" >
           ${item}
           </option> `;
   }
   await data.prdSize.map(myFunction);
-  
-  document.getElementById('prdImg').innerHTML = `<img class="pic_select card-img-top" src="${data.prdImageUrl}" alt="Card image cap">`
-  document.getElementById('prdName').innerHTML = data.prdname
-  document.getElementById('prdPrice').innerHTML =`${data.prdPrice} THB`
-  document.getElementById('prdSize').innerHTML= Size
-  document.getElementById('prdDetail').innerHTML=data.txtDetail
-  document.getElementById('AddtoBag').onclick=()=>{ 
-    let e = document.getElementById('prdSize').value
-    if(e !="default"){
-      setlocal(re,e)
-    }else{
-      alert('Please Select Size !!!')
+  document.getElementById("prdImg").innerHTML = `<img class="pic_select card-img-top" src="${data.prdImageUrl}" alt="Card image cap">`;
+  document.getElementById("prdName").innerHTML = data.prdname;
+  document.getElementById("prdPrice").innerHTML = `${data.prdPrice} THB`;
+  document.getElementById("prdSize").innerHTML = Size;
+  document.getElementById("prdDetail").innerHTML = data.txtDetail;
+  document.getElementById("AddtoBag").onclick = () => {
+    let e = document.getElementById("prdSize").value;
+    if (e != "default") {
+      setlocal(re, e);
+    } else {
+      alert("Please Select Size !!!");
     }
-    }
-   
-
-
+  };
 }
