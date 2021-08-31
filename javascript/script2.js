@@ -37,84 +37,21 @@ async function setlocal(data) {
 }
 
 async function ShowDetail(data, searchParams) {
-  let divAll = document.getElementById("Detail");
-  let divPic = document.createElement("div");
-  divPic.classList.add("card");
-  divPic.classList.add("col-lg-7");
-  divPic.classList.add("col-xs-12");
-  let imgPrd = document.createElement("img");
-  imgPrd.setAttribute("src", data.prdImageUrl);
-  imgPrd.classList.add("pic_select");
-  imgPrd.classList.add("card-img-top");
+  let Size = "<option value=default selected> Please Select </option> "
+  function myFunction(item) {
+    Size += `<option value="${item}" >
+          ${item}
+          </option> `;
+  }
+  console.log("show", data);
+  data.prdSize.map(myFunction);
+  
+  document.getElementById('prdImg').innerHTML = `<img class="pic_select card-img-top" src="${data.prdImageUrl}" alt="Card image cap">`
+  document.getElementById('prdName').innerHTML = data.prdname
+  document.getElementById('prdPrice').innerHTML =`${data.prdPrice} THB`
+  document.getElementById('prdSize').innerHTML= Size
+  document.getElementById('prdDetail').innerHTML=data.txtDetail
+  document.getElementById('demo').addEventListener('click',()=>{ setlocal(re) })
 
-  divCon = document.createElement("div");
-  divCon.classList.add("col-lg-4");
-  divCon.classList.add("col-xs-12");
-  let prdName = document.createElement("h2");
-  prdName.textContent = `Product name: ${data.prdname}`;
-  let prdPrice = document.createElement("h4");
-  prdPrice.classList.add("text-danger");
-  let tPrice =`${data.prdPrice}  THB`;
-  prdPrice.textContent = tPrice;
-  let pSize = document.createElement("p");
-  pSize.classList.add("text-secondary");
-  pSize.textContent = "Size";
-  let optionSize = document.createElement("option");
-  let selectSize = document.createElement("select");
-  selectSize.setAttribute("name", "size");
-  selectSize.setAttribute("size", "1");
 
-  optionSize.setAttribute("value", "default");
-  optionSize.classList.add("selected");
-  optionSize.textContent = "Pleases Select";
-  selectSize.appendChild(optionSize);
-  data.prdSize.forEach((e)=>{
-    let otp = []
-    otp[e] = document.createElement('option')
-    otp[e].setAttribute('value',e)
-    otp[e].textContent=e
-    selectSize.appendChild(otp[e])
-    
-  })
-let ahref =document.createElement("a");
-ahref.setAttribute("href","page3.html")
-  let bttAddBag = document.createElement("button");
-  bttAddBag.classList.add("btn");
-  bttAddBag.classList.add("btn-dark");
-  bttAddBag.classList.add("text-white");
-
-  bttAddBag.setAttribute("id", "addToBag");
-  bttAddBag.textContent = "Add To Bag";
-  bttAddBag.setAttribute("id", "myBtn");
-  bttAddBag.addEventListener('click',(()=>{setlocal(re)}))
-  let tPrdDetail = document.createElement("h3");
-  tPrdDetail.textContent = "Product Details";
-  let prePrdDetail = document.createElement("h5");
-  prePrdDetail.textContent = data.txtDetail
-
-  let bttShowDetai = document.createElement("button");
-  bttShowDetai.classList.add("btndetail");
-  bttShowDetai.classList.add("btn");
-  bttShowDetai.classList.add("btn-secondary");
-  bttShowDetai.classList.add("text-dark");
-
-  bttShowDetai.textContent = "Show detail";
-let br =document.createElement('br')
-
-  divPic.appendChild(imgPrd);
-  divAll.appendChild(divPic);
-  divPic.appendChild(imgPrd);
-  divAll.appendChild(divCon);
-  divCon.appendChild(prdName);
-  divCon.appendChild(prdPrice);
-  divCon.appendChild(pSize);
-  divCon.appendChild(selectSize);
-  divCon.appendChild(ahref)
-  ahref.appendChild(bttAddBag)
- 
-  // divCon.appendChild(bttAddBag);
-
-  divCon.appendChild(tPrdDetail);
-  divCon.appendChild(prePrdDetail)
-  divCon.appendChild(bttShowDetai);
 }
