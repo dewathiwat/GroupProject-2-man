@@ -5,6 +5,10 @@
     }
     
 }
+
+.bg-secondary{
+    background-color: rgb(209, 7, 7);
+}
 // !Page 1
 button{
     width: 100%;
@@ -34,7 +38,9 @@ img.picAll{
     height: 80%;
     width: 500px;
 }
-
+.backP2{
+    text-decoration: none;
+}
 //dev-doom work
 // img.carouselimg, .card-img-top{
 //     height: 500px;
@@ -171,7 +177,9 @@ color: black;
       padding: 50px;
     }
 
-
+    input[type="number" i] {
+        width: 40px;
+       }
     // page 4
   
     button.bttRe{

@@ -6,6 +6,10 @@
   display: none;
 }
 
+.bg-secondary {
+  background-color: #d10707;
+}
+
 button {
   width: 100%;
 }
@@ -28,6 +32,10 @@ img.picAll {
 .pic_select {
   height: 80%;
   width: 500px;
+}
+
+.backP2 {
+  text-decoration: none;
 }
 
 p.sideH {
@@ -140,6 +148,9 @@ span.pay3 {
   }
   .prddetailselect {
     padding: 50px;
+  }
+  input[type="number" i] {
+    width: 40px;
   }
   button.bttRe {
     width: 100%;

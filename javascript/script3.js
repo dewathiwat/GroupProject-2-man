@@ -15,13 +15,6 @@ const getProductDetails = async () => {
         (product) =>
           ` 
         
-          <div class="displayNone"> ${(i += 1)} </div>
-          <div class="displayNone"> ${console.log(i)} </div>
-
-          
-          
-          
-
           <div class="contentPrd row">
         
     
@@ -30,10 +23,11 @@ const getProductDetails = async () => {
             </div>
     
             <div class="col-8">
+            <h2  id="prdPrice" style="color: red;">${
+              product.prdPrice
+            } THB</h2>
               <h3 id="prdName">${product.prdname}</h3>
-              <h2  id="prdPrice" style="color: red;">${
-                product.prdPrice
-              } THB</h2>
+              
               <div class="row">
                 <div class="col-6">
                   <p>Size</p>
@@ -56,18 +50,34 @@ const getProductDetails = async () => {
         </div> 
 
         
+<div class="displayNone">   ${totalPrice+=parseInt(product.prdPrice)}</div>
 
-
-     
+       
 
         `
       )
       .join("");
+     
+  console.log(totalPrice);
+
   } catch (e) {
     console.log(e.message);
   }
 };
 getProductDetails();
+
+document.querySelector('.ttp').textContent=totalPrice;
+document.querySelector('.ttp2').textContent=totalPrice;
+document.querySelector('.ttp3').textContent=totalPrice;
+
+
+
+
+
+document.getElementById('checkoutpay').addEventListener('click',()=>{
+localStorage.setItem('totalprice',totalPrice)
+})
+
 // getslid_show();
 
 // function updateCartTotal(input,price) {
@@ -77,9 +87,9 @@ getProductDetails();
 //   document.getElementsByClassName('ttp').textContent= total
 //   console.log(total);
 // }
-document.getElementById("pRemove").onclick = () => {
-  delete obj[x];
-  localStorage.setItem("dataproduct", JSON.stringify(obj));
-  console.log("", x);
-  alert("re");
-}
+// document.getElementById("pRemove").onclick = () => {
+//   delete obj[x];
+//   localStorage.setItem("dataproduct", JSON.stringify(obj));
+//   console.log("", x);
+//   alert("re");
+// }
