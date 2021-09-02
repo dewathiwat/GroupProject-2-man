@@ -3,7 +3,7 @@ async function getslid_show(){
   const response = await axios.get("https://6102d7aa79ed680017482359.mockapi.io/slider");
   console.log('slide',response)
 
-  let slide = document.getElementById('slideshow').innerHTML = response.data.map((p)=>
+  document.getElementById('slideshow').innerHTML = response.data.map((p)=>
     `<div class="carousel-item "id="${p.id}">
       <img src="${p.imageUrl}" class="d-block w-100" >
       <div class="carousel-caption d-none d-md-block">
@@ -16,6 +16,7 @@ async function getslid_show(){
    ac.classList.add('active')
 
 }
+getslid_show();
 
 
 //todo All product
@@ -61,7 +62,7 @@ const getProductDetails = async () => {
   }
 };
 getProductDetails();
-getslid_show();
+
 
 
 
