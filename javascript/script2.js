@@ -45,7 +45,7 @@ async function ShowDetail(data, searchParams) {
   document.getElementById("prdSize").innerHTML = Size;
   document.getElementById("prdDetail").innerHTML = data.txtDetail;
   document.getElementById("AddtoBag").onclick = () => {
-    let e = document.getElementById("prdSize").value;
+    let e = document.getElementById("prdSize").value
     if (e != "default") {
       setlocal(re, e);
     } else {
